@@ -1,0 +1,202 @@
+@use "../styles/breakpoints.scss" as *;
+
+* {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #4e148c;
+}
+
+body {
+  overflow: hidden auto;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.load,
+.error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2em;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.error {
+  color: red;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+    max-width: 1070px;
+    margin: 84px auto 0;
+    padding: 0 10px 50px;
+    &__header {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      gap: 0 34px;
+      &-title h1 {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      &-title {
+        @include respond-to(sm) {
+          display: none;
+        }
+      }
+      &-img {
+        @include respond-to(sm) {
+          width: 57px;
+          height: 46px;
+        }
+      }
+      @include respond-to(sm) {
+        justify-content: center;
+      }
+    }
+    &__wrapper {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      gap: 30px 50px;
+      @include respond-to(sm) {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+    &__sidebar {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: flex-start;
+      gap: 47px 0;
+      @include respond-to(sm) {
+        display: none;
+        flex-direction: row;
+        gap: 0 66px;
+        padding: 0;
+        background-color: #4e148c;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      }
+      &--active {
+        @include respond-to(sm) {
+          display: flex;
+        }
+      }
+      @include respond-to(xs) {
+        gap: 0;
+      }
+    }
+    &__sidebar-drop-down {
+      grid-column: 1;
+      grid-row: 1 / -1;
+      & > button {
+        display: none;
+        @include respond-to(sm) {
+          display: block;
+          margin-left: auto;
+          border: none;
+          background-color: transparent;
+          color: #fff;
+          font-size: 12px;
+        }
+      }
+      & > p {
+        display: none;
+        @include respond-to(sm) {
+          display: block;
+          color: #fff;
+          font-size: 16px;
+        }
+      }
+      @include respond-to(sm) {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        padding: 12px 23px;
+        margin: 11px 0 38px;
+        width: 100%;
+        height: auto;
+        background-color: #4e148c;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      }
+      &--active {
+        @include respond-to(sm) {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          flex-direction: row;
+          min-height: 268px;
+          height: auto;
+        }
+      }
+    }
+    &__sorting {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      grid-column: 2;
+      grid-row: 1;
+      @include respond-to(sm) {
+        order: -1;
+      }
+    }
+    &__tickets {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 47px 0;
+      max-width: 727px;
+      height: 100%;
+      grid-column: 2;
+      grid-row: 2;
+      &-load-tickets {
+        width: 100%;
+        height: 62px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        background-color: #4e148c;
+        cursor: pointer;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      }
+    }
+    &__tickets-wrapper {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 47px 0;
+      @include respond-to(sm) {
+        gap: 53px 0;
+      }
+    }
+    @include respond-to(sm) {
+      gap: 27px 0;
+      margin-top: 35px;
+    }
+  }
+}
